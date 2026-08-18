@@ -13,17 +13,18 @@
 2. Cole todo o conteúdo do arquivo `front/supabase-schema.sql`
 3. Clique em **Run** para executar
 
-Isso cria as 13 tabelas:
+Isso cria as 14 tabelas:
 
 | Tabela | Descrição |
 |---|---|
+| `users` | Usuários unificados (admin/orientador/professor) |
+| `user_schools` | Pivot users ↔ schools |
 | `schools` | Escolas cadastradas |
-| `orientadores` | Orientadores |
 | `classes` | Turmas (vinculadas a escolas) |
 | `rooms` | Salas (vinculadas a turmas) |
 | `students` | Alunos (vinculados a salas) |
 | `schedules` | Horários das turmas/salas |
-| `orientador_schedules` | Horários dos orientadores |
+| `orientador_schedules` | Horários dos orientadores por escola |
 | `segment_configs` | Configuração por segmento NAP |
 | `items` | Catálogo de itens (tapetes/tecnologia) |
 | `nap_items` | Itens vinculados a NAPs por escola |
@@ -45,9 +46,13 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=sua_chave_aqui
 ```bash
 cd front
 pnpm install
-pnpm run dev
+pnpm dev
 ```
 
-## 5. Importar dados seed (opcional)
+## 5. Comandos Úteis
 
-Se tiver o arquivo `seed.json`, use o botão **Importar JSON** na sidebar (menu Dados) para carregar os dados iniciais.
+```bash
+pnpm dev          # Rodar em desenvolvimento
+pnpm run build    # Build de produção
+pnpm start        # Rodar build de produção
+```
